@@ -5,13 +5,16 @@ class Requisicao():
  
     def __init__(self):
         arquivo = open("meu.txt", 'r')
-        self.key = arquivo.read()
+        self.key = 'apikey=' + arquivo.read()
         self.link = 'http://www.omdbapi.com/?'
         
     
     def Pesquisa_titulo(self, titulo):
         self.titulo = '&t='+ titulo
         self.link = self.link + self.key + self.titulo
+
+        #Testar se o link está sendo montado corretamente
+        #print(self.link)
 
         self.requisicao = requests.get(self.link)
         self.dicionario = json.loads(self.requisicao.text)
@@ -22,8 +25,6 @@ class Requisicao():
             return True
 
     def Exibir(self):
-        #Testar se o link está sendo montado corretamente
-        #print(self.link)
         self.tipo = str(self.dicionario["Type"])
 
         print("Titulo: ", self.dicionario["Title"], " - ", self.tipo.upper() )
