@@ -6,12 +6,20 @@ argumento = sys.argv
 requisicao = Requisicao()
 titulo =''
 
-for arg in argumento:
-    if not arg == 'main.py':
-        titulo += arg + "+"
+if len(sys.argv) > 1:
+    for arg in argumento:
+        if not arg == 'main.py':
+            titulo += arg + "+"
+            
 
-if requisicao.Pesquisa_titulo(titulo):
-    requisicao.Exibir()
+    if requisicao.Pesquisa_titulo(titulo):
+        requisicao.Exibir()
+    else:
+        print("Nenhum título encontrado")
+
 else:
-    print("Nenhum título encontrado")
+    print('Favor digitar o Título a ser pesquisado. não é necessário \'\' \nExemplo: python main.py nome do filme')
+    exit()
+
+
 
