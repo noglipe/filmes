@@ -10,7 +10,9 @@ if len(sys.argv) > 1:
     for arg in argumento:
         if not arg == 'main.py':
             titulo += arg + "+"
-            
+
+    #removendo o '+' excedente na construção da string
+    titulo = titulo[:-1]
 
     if requisicao.Pesquisa_titulo(titulo):
         requisicao.Exibir()
